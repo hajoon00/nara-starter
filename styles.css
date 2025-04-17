@@ -490,25 +490,26 @@ input[type="checkbox"]:checked+.task-text {
     }
 
 .speech-bubble {
-  position: absolute;
+  position: fixed;
   background-color: white;
   border-radius: 20px;
-  padding: 10px 15px;
+  padding: 15px 25px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   color: #333;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  max-width: 200px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  max-width: 300px;
   text-align: center;
   opacity: 0;
-  transform: scale(0.8);
+  transform: translate(-50%, -50%) scale(0.8);
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 1000;
+  pointer-events: none;
 }
 
 .speech-bubble.show {
   opacity: 1;
-  transform: scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .speech-bubble::after {
@@ -520,4 +521,85 @@ input[type="checkbox"]:checked+.task-text {
   border-width: 10px;
   border-style: solid;
   border-color: white transparent transparent transparent;
+}
+
+#mood-selector {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+#mood-selector h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.mood-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.mood-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mood-option:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.mood-option.selected {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.mood-emoji {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.mood-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: #333;
+}
+
+#current-mood {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 15px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.current-mood-emoji {
+  font-size: 20px;
+}
+
+.current-mood-label {
+  font-size: 14px;
+  color: #333;
 }
