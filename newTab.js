@@ -619,6 +619,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Encouragement messages
+  const encouragementMessages = [
+    "Great job!",
+    "You're making progress!",
+    "Keep going!",
+    "Amazing work!",
+    "You're on fire!",
+    "Way to go!",
+    "You're crushing it!",
+    "Keep it up!",
+    "Fantastic!",
+    "You're unstoppable!",
+  ];
+
+  // Function to show speech bubble
+  function showSpeechBubble(deerArea) {
+    const message =
+      encouragementMessages[
+        Math.floor(Math.random() * encouragementMessages.length)
+      ];
+    const bubble = document.createElement("div");
+    bubble.className = "speech-bubble";
+    bubble.textContent = message;
+
+    // Position the bubble above the deer
+    bubble.style.left = `${deerArea.left + deerArea.width / 2}px`;
+    bubble.style.top = `${deerArea.top - 50}px`;
+
+    document.body.appendChild(bubble);
+
+    // Show the bubble
+    setTimeout(() => bubble.classList.add("show"), 10);
+
+    // Remove the bubble after 3 seconds
+    setTimeout(() => {
+      bubble.classList.remove("show");
+      setTimeout(() => bubble.remove(), 300);
+    }, 1500);
+  }
+
   function renderTasks(tasks, backgroundIndex, category) {
     const tasksHeader =
       document.getElementById("tasks-header") || document.createElement("div");
@@ -743,6 +783,14 @@ document.addEventListener("DOMContentLoaded", () => {
             oldItemEl.style.transition = "";
             oldItemEl.style.animation = "";
           }, 600);
+        }
+
+        // Show encouragement message when a task is completed
+        if (checkbox.checked) {
+          const deerArea = deerAreas.find((area) => area.category === category);
+          if (deerArea) {
+            showSpeechBubble(deerArea);
+          }
         }
       });
 

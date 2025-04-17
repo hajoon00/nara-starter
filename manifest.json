@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 4,
   "name": "Nara",
   "description": "Chrome extension to manage tasks and subtasks with GPT.",
   "version": "1.0",
